@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="Refresh" content="0; url='https://redirect-portfolio.webflow.io/'" />
-	<title>Portfolio</title>
-	<style>
-		img {
-			height: 50vh;
-			width: auto;
-		}
-		body {
-			background-color: #161618;
-			color: #ff848b;
-		}	
-	</style>
-</head>
-<body>
-	<a href="https://redirect-portfolio.webflow.io/">
-		<img src="https://i.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.webp" /> 
-	</a>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Portfolio</title>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="transition-page.css" />
+		<link rel="stylesheet" href="shared-styles" />
+	</head>
+	<body>
+		<div class="top-half">
+			<div class="top-half-content">
+				<h3>Check your address bar</h3>
+				<p>Beware of phishing! <br class="mobile-break" />Make sure your link starts with contactivanrp.github.io</p>
+				<p id="url">You will be redirected in <span id="countdown-seconds">6</span> second<span id="s">s</span></p>
+				<img id="spinner" src="spinner.gif" alt="loading" />
+				<p></p>
+				<div class="browser-image" style="background-image: url('browser.svg')">
+					<div class="links links-gov">contactivanrp.github.io</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			var currentURL = "https://contactivanrp.github.io/portfolio/";
+			
+			function handleClick() {
+				window.location.href = currentURL;
+			}
+
+			document.addEventListener("click", handleClick);
+
+			var countdown = 6;
+			// Set an interval to update the countdown timer every second
+			var interval = setInterval(function () {
+				// Decrement the countdown variable
+				countdown--;
+				// Get the countdown element
+				var countElement = document.getElementById("countdown-seconds");
+				// Update the countdown element with the current countdown value
+				countElement.textContent = countdown;
+				// If the countdown has reached 0, stop the interval and reset the countdown
+				if (countdown === 0) {
+					clearInterval(interval);
+					countdown = 6;
+					window.location.href = currentURL;
+				}
+			}, 1000);
+		</script>
+	</body>
 </html>
